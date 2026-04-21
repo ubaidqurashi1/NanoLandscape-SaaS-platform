@@ -1,0 +1,18 @@
+import requests
+import json
+
+# Example simulation request
+params = {
+    "np_parameters": {
+        "core": {"radius": 25.0, "aspect_ratio": 1.0},
+        "surface": {"zeta_potential": -20.0, "ligand_density": 0.1},
+        "corona": {"protein_concentrations": [0.0] * 100},
+        "context": {"pH": 7.4, "ionic_strength": 0.15},
+        "spatial": {"position": [0.0, 0.0, 0.0]}
+    },
+    "time_horizon": 3600,
+    "ensemble_size": 100
+}
+
+response = requests.post("http://localhost:8000/simulate", json=params)
+print(response.json())
