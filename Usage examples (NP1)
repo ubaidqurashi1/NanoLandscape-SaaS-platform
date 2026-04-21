@@ -1,0 +1,13 @@
+# Design a kidney-targeted nanoparticle
+design_request = {
+    "target_organ": "kidney",
+    "desired_fate": "filtration",
+    "constraints": {
+        "size_range": [10, 50],
+        "charge_range": [-15, 15],
+        "ligand_types": ["PEG", "citrate"]
+    },
+    "batch_variability_limit": 0.05
+}
+
+response = requests.post("http://localhost:8000/design/nanoparticle", json=design_request)
