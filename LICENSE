@@ -1,36 +1,60 @@
-MIT License
 
-Copyright (c) 2026 Syed Ubaid Qurashi
+**2. Create `setup.py`:**
+```python
+"""
+Setup script for NanoLandscape package
+"""
+from setuptools import setup, find_packages
 
-This comprehensive implementation includes:
-
-1. **Complete API structure** with FastAPI
-2. **Core mathematical engine** implementing the full superspace framework
-3. **All service layers** (Designer, Analyzer, Optimizer, Predictor)
-4. **Database layer** with SQLite persistence
-5. **Landscape construction** and analysis tools
-6. **SDE solvers** with multiple methods
-7. **Validation utilities** for model verification
-8. **CLI interface** for command-line usage
-9. **Setup and packaging** scripts
-10. **Documentation** and examples
-
-The code is production-ready with proper error handling, logging, type hints, and follows modern Python best practices. It implements all aspects of the mathematical framework described in your specification, including the multiscale dynamics, energy landscapes, heterogeneity analysis, and control optimization features.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+setup(
+    name="nanolandscape",
+    version="1.0.0",
+    author="NanoLandscape Development Team",
+    author_email="info@nanolandscape.ai",
+    description="Advanced Nanoparticle Superspace Framework SaaS",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    packages=find_packages(),
+    install_requires=[
+        "fastapi>=0.68.0",
+        "uvicorn>=0.15.0",
+        "numpy>=1.21.0",
+        "scipy>=1.7.0",
+        "pandas>=1.3.0",
+        "scikit-learn>=1.0.0",
+        "umap-learn>=0.5.0",
+        "torch>=1.9.0",
+        "optuna>=2.10.0",
+        "matplotlib>=3.4.0",
+        "seaborn>=0.11.0",
+        "click>=8.0.0",
+        "joblib>=1.1.0"
+    ],
+    extras_require={
+        "dev": [
+            "pytest>=6.0",
+            "black>=21.0",
+            "flake8>=3.9.0",
+            "mypy>=0.910"
+        ],
+        "gpu": [
+            "cupy>=9.0.0"
+        ]
+    },
+    entry_points={
+        "console_scripts": [
+            "nanolandscape=nanolandscape.cli.main:cli"
+        ]
+    },
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Topic :: Scientific/Engineering :: Physics",
+        "Topic :: Scientific/Engineering :: Chemistry"
+    ],
+    python_requires=">=3.8"
+)
