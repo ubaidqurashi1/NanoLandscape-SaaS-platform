@@ -1,0 +1,7 @@
+# Analyze batch variability
+analysis_request = {
+    "simulation_results": response.json(),
+    "analysis_type": "heterogeneity"
+}
+
+response = requests.post("http://localhost:8000/analyze/heterogeneity", json=analysis_request)
